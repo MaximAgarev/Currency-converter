@@ -7,6 +7,19 @@
 
 import UIKit
 
+private extension String {
+    var floatValue: Float {
+        return (self as NSString).floatValue
+    }
+}
+
+private var amdRate: Float = 0.1561
+private var usdRate: Float = 63.06
+private var eurRate: Float = 62.47
+private var aedRate: Float = 16.91
+private var tklRate: Float = 3.39
+
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var amdLabel: UILabel!
@@ -15,6 +28,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var eurLabel: UILabel!
     @IBOutlet weak var aedLabel: UILabel!
     @IBOutlet weak var tklLabel: UILabel!
+    
+    @IBOutlet weak var tklRateLabel: UILabel!
     
     @IBOutlet weak var amdValue: UITextField!
     @IBOutlet weak var rubValue: UITextField!
@@ -30,9 +45,30 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        tklRateLabel.text = String(tklRate)
+        
+        amdValue.becomeFirstResponder()
     }
 
 
+    @IBAction func amdDidChange(_ sender: Any) {
+        rubValue.text = String(Int(round(amdValue.text!.floatValue * amdRate)))
+    }
+    
+    @IBAction func rubDidChange(_ sender: Any) {
+        amdValue.text = String(Int(round(rubValue.text!.floatValue * amdRate)))
+    }
+        
+    @IBAction func resetDidTap(_ sender: Any) {
+        amdValue.text = ""
+        rubValue.text = ""
+        usdValue.text = ""
+        eurValue.text = ""
+        aedValue.text = ""
+        tklValue.text = ""
+        
+    }
+    
 }
 
