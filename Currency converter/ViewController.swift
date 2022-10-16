@@ -29,8 +29,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var aedLabel: UILabel!
     @IBOutlet weak var tklLabel: UILabel!
     
+    @IBOutlet weak var rubRateLabel: UILabel!  // rate to AMD
+    @IBOutlet weak var amdRateLabel: UILabel!
+    @IBOutlet weak var usdRateLabel: UILabel!
+    @IBOutlet weak var eurRateLabel: UILabel!
+    @IBOutlet weak var aedRateLabel: UILabel!
     @IBOutlet weak var tklRateLabel: UILabel!
-    
+        
     @IBOutlet weak var amdValue: UITextField!
     @IBOutlet weak var rubValue: UITextField!
     @IBOutlet weak var usdValue: UITextField!
@@ -46,7 +51,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tklRateLabel.text = String(tklRate)
+        rubRateLabel.text = String(round((1/amdRate)*100)/100)
+        amdRateLabel.text = String((amdRate))
+        usdRateLabel.text = String((usdRate))
+        eurRateLabel.text = String((eurRate))
+        aedRateLabel.text = String((aedRate))
+        tklRateLabel.text = String((tklRate))
         
         amdValue.becomeFirstResponder()
     }
