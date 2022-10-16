@@ -141,6 +141,23 @@
                             <constraint firstItem="rkY-Pj-ANQ" firstAttribute="leading" secondItem="Lxo-aw-Bib" secondAttribute="trailing" constant="20" id="wK1-20-5kh"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="aedLabel" destination="bRw-Ch-uub" id="6DR-QA-a1L"/>
+                        <outlet property="aedValue" destination="kec-3F-c0l" id="asM-NI-CbD"/>
+                        <outlet property="amdLabel" destination="Lxo-aw-Bib" id="49t-0j-vJ4"/>
+                        <outlet property="amdValue" destination="rkY-Pj-ANQ" id="514-G6-a1J"/>
+                        <outlet property="eurLabel" destination="3vw-BT-Yg6" id="bSB-BW-i5T"/>
+                        <outlet property="eurValue" destination="Nkk-63-eay" id="nG5-XJ-cFP"/>
+                        <outlet property="resetButton" destination="0OO-ra-cKx" id="KjC-rM-4WQ"/>
+                        <outlet property="rubLabel" destination="E6y-oj-eXP" id="r21-EH-SM3"/>
+                        <outlet property="rubValue" destination="OZl-RQ-aOj" id="8AX-aP-X5q"/>
+                        <outlet property="tklLabel" destination="3NP-1W-uKy" id="vGz-Ft-NcH"/>
+                        <outlet property="tklValue" destination="UY8-Oa-bXj" id="mJ5-oT-fOx"/>
+                        <outlet property="updateLabel" destination="x9I-ax-6SZ" id="WSG-HD-7W4"/>
+                        <outlet property="updateSwitch" destination="ute-e2-ZLP" id="qqG-Ba-OtL"/>
+                        <outlet property="usdLabel" destination="2z5-US-PDv" id="kWe-5l-Qyd"/>
+                        <outlet property="usdValue" destination="D1S-cr-vGk" id="0UJ-lV-yQ1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
