@@ -74,12 +74,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        rubRateLabel.text = String(format: "%.2f", (1/amdRate))
-        amdRateLabel.text = String(format: "%.2f", amdRate)
-        usdRateLabel.text = String(format: "%.2f", usdRate)
-        eurRateLabel.text = String(format: "%.2f", eurRate)
-        aedRateLabel.text = String(format: "%.2f", aedRate)
-        tklRateLabel.text = String(format: "%.2f", tklRate)
+        updateRateLabels()
         
         allValueFields.append(rubValue)
         allValueFields.append(amdValue)
@@ -90,6 +85,15 @@ class ViewController: UIViewController {
         
         amdValue.becomeFirstResponder()
         amdValue.layer.borderWidth = 2
+    }
+    
+    private func updateRateLabels() {
+        rubRateLabel.text = String(format: "%.2f", (1/amdRate))
+        amdRateLabel.text = String(format: "%.3f", amdRate)
+        usdRateLabel.text = String(format: "%.2f", usdRate)
+        eurRateLabel.text = String(format: "%.2f", eurRate)
+        aedRateLabel.text = String(format: "%.2f", aedRate)
+        tklRateLabel.text = String(format: "%.2f", tklRate)
     }
 
     private func clearFields() {
@@ -156,51 +160,57 @@ class ViewController: UIViewController {
     
     
     @IBAction func rubDidChange(_ sender: Any) {
-        calculateValues(field: rubValue)
+        if updateSwitch.isOn == false { calculateValues(field: rubValue) }
     }
 
     @IBAction func amdDidChange(_ sender: Any) {
-        calculateValues(field: amdValue)
+        if updateSwitch.isOn == false { calculateValues(field: amdValue) }
     }
     
     @IBAction func usdDidChange(_ sender: Any) {
-        calculateValues(field: usdValue)
+        if updateSwitch.isOn == false { calculateValues(field: usdValue) }
     }
     
     @IBAction func eurDidChange(_ sender: Any) {
-        calculateValues(field: eurValue)
+        if updateSwitch.isOn == false { calculateValues(field: eurValue) }
     }
     
     @IBAction func aedDidChange(_ sender: Any) {
-        calculateValues(field: aedValue)
+        if updateSwitch.isOn == false { calculateValues(field: aedValue) }
     }
     
     @IBAction func tklDidChange(_ sender: Any) {
-        calculateValues(field: tklValue)
+        if updateSwitch.isOn == false { calculateValues(field: tklValue) }
     }
     
     
     @IBAction func updateDidSwitch(_ sender: Any) {
         if updateSwitch.isOn {
             clearFields()
-//            colorizeFields(color: .systemGray6)
+            resetButton.setTitle("Save", for: .normal)
+            resetButton.tintColor = .red
+            colorizeFields(color: .systemGray6)
         } else {
             clearFields()
-//            colorizeFields(color: .clear)
+            resetButton.setTitle("Reset", for: .normal)
+            resetButton.tintColor = .systemBlue
+            colorizeFields(color: .clear)
         }
     }
-    
-
-    
-
-    
-    
-
-    
-
         
     @IBAction func resetDidTap(_ sender: Any) {
-        clearFields()
+        if updateSwitch.isOn {
+            if amdValue.text != "" { amdRate = amdValue.text!.floatValue }
+            if usdValue.text != "" { usdRate = usdValue.text!.floatValue }
+            if eurValue.text != "" { eurRate = eurValue.text!.floatValue }
+            if aedValue.text != "" { aedRate = aedValue.text!.floatValue }
+            if tklValue.text != "" { tklRate = tklValue.text!.floatValue }
+            updateRateLabels()
+            clearFields()
+        } else {
+            clearFields()
+        }
+        
         
     }
     

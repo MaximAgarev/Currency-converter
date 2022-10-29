@@ -117,7 +117,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rkY-Pj-ANQ">
                                 <rect key="frame" x="100" y="405.33333333333331" width="210" height="38.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="6"/>
