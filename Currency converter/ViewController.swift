@@ -42,46 +42,44 @@ class ViewController: UIViewController {
     @IBOutlet weak var eurValue: UITextField!
     @IBOutlet weak var aedValue: UITextField!
     @IBOutlet weak var tklValue: UITextField!
-    
     var allValueFields: [UITextField] = []
-    
-    func takeRate(field: UITextField) -> Float {
-
-        let fieldSelected = field
-
-         switch fieldSelected{
-         case amdValue:
-             return amdRate
-         case usdValue:
-             return usdRate
-         case eurValue:
-             return eurRate
-         case aedValue:
-             return aedRate
-         case tklValue:
-             return tklRate
-         case rubValue:
-             return rubRate
-         default:
-             return 1
-         }
-    }
-
     
     @IBOutlet weak var resetButton: UIButton!
     
     @IBOutlet weak var updateLabel: UILabel!
     @IBOutlet weak var updateSwitch: UISwitch!
     
+    private func takeRate(field: UITextField) -> Float {
+
+        let fieldSelected = field
+        switch fieldSelected{
+        case amdValue:
+            return amdRate
+        case usdValue:
+            return usdRate
+        case eurValue:
+            return eurRate
+        case aedValue:
+            return aedRate
+        case tklValue:
+            return tklRate
+        case rubValue:
+            return rubRate
+        default:
+            return 1
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        rubRateLabel.text = String(round((1/amdRate)*100)/100)
-        amdRateLabel.text = String((amdRate))
-        usdRateLabel.text = String((usdRate))
-        eurRateLabel.text = String((eurRate))
-        aedRateLabel.text = String((aedRate))
-        tklRateLabel.text = String((tklRate))
+        rubRateLabel.text = String(format: "%.2f", (1/amdRate))
+        amdRateLabel.text = String(format: "%.2f", amdRate)
+        usdRateLabel.text = String(format: "%.2f", usdRate)
+        eurRateLabel.text = String(format: "%.2f", eurRate)
+        aedRateLabel.text = String(format: "%.2f", aedRate)
+        tklRateLabel.text = String(format: "%.2f", tklRate)
         
         allValueFields.append(rubValue)
         allValueFields.append(amdValue)
@@ -91,7 +89,7 @@ class ViewController: UIViewController {
         allValueFields.append(tklValue)
         
         amdValue.becomeFirstResponder()
-        amdValue.backgroundColor = .systemGray6
+        amdValue.layer.borderWidth = 2
     }
 
     private func clearFields() {
@@ -106,9 +104,40 @@ class ViewController: UIViewController {
         }
     }
     
-    private func colorizeOnTouchDown(field: UITextField) {
-        colorizeFields(color: .clear)
-        field.backgroundColor = .systemGray6
+    private func thinBorder() {
+        for i in allValueFields {
+            i.layer.borderWidth = 0
+        }
+    }
+    
+    private func actionsOnTouchDown(field: UITextField) {
+        thinBorder()
+        field.layer.borderWidth = 2
+        clearFields()
+    }
+    
+    @IBAction func rubDidTouchDown(_ sender: Any) {
+        actionsOnTouchDown(field: rubValue)
+    }
+
+    @IBAction func amdDidTouchDown(_ sender: Any) {
+        actionsOnTouchDown(field: amdValue)
+    }
+    
+    @IBAction func usdDidTouchDown(_ sender: Any) {
+        actionsOnTouchDown(field: usdValue)
+    }
+    
+    @IBAction func eurDidTouchDown(_ sender: Any) {
+        actionsOnTouchDown(field: eurValue)
+    }
+    
+    @IBAction func aedDidTouchDown(_ sender: Any) {
+        actionsOnTouchDown(field: aedValue)
+    }
+    
+    @IBAction func tklDidTouchDown(_ sender: Any) {
+        actionsOnTouchDown(field: tklValue)
     }
     
     
@@ -116,50 +145,62 @@ class ViewController: UIViewController {
         for i in allValueFields {
             if i != field {
                 if i == rubValue {
-                    i.text = String(Int(round(field.text!.floatValue * takeRate(field: field))))
+                    i.text = String(format: "%.2f", field.text!.floatValue * takeRate(field: field))
                 } else {
-                    i.text = String(Int(round(field.text!.floatValue * takeRate(field: field) / takeRate(field: i))))
+                    i.text = String(format: "%.2f", field.text!.floatValue * takeRate(field: field) / takeRate(field: i))
                 }
                 
             }
         }
     }
     
-    @IBAction func updateDidSwitch(_ sender: Any) {
-        if updateSwitch.isOn {
-            clearFields()
-            colorizeFields(color: .systemGray6)
-        } else {
-            clearFields()
-            colorizeFields(color: .clear)
-        }
-    }
     
-    @IBAction func amdDidTouchDown(_ sender: Any) {
-        colorizeOnTouchDown(field: amdValue)
+    @IBAction func rubDidChange(_ sender: Any) {
+        calculateValues(field: rubValue)
     }
-    
+
     @IBAction func amdDidChange(_ sender: Any) {
-//        rubValue.text = String(Int(round(amdValue.text!.floatValue * amdRate)))
         calculateValues(field: amdValue)
     }
     
-    
-    @IBAction func rubDidTouchDown(_ sender: Any) {
-        colorizeOnTouchDown(field: rubValue)
+    @IBAction func usdDidChange(_ sender: Any) {
+        calculateValues(field: usdValue)
     }
     
-    @IBAction func rubDidChange(_ sender: Any) {
-        amdValue.text = String(Int(round(rubValue.text!.floatValue / amdRate)))
+    @IBAction func eurDidChange(_ sender: Any) {
+        calculateValues(field: eurValue)
     }
+    
+    @IBAction func aedDidChange(_ sender: Any) {
+        calculateValues(field: aedValue)
+    }
+    
+    @IBAction func tklDidChange(_ sender: Any) {
+        calculateValues(field: tklValue)
+    }
+    
+    
+    @IBAction func updateDidSwitch(_ sender: Any) {
+        if updateSwitch.isOn {
+            clearFields()
+//            colorizeFields(color: .systemGray6)
+        } else {
+            clearFields()
+//            colorizeFields(color: .clear)
+        }
+    }
+    
+
+    
+
+    
+    
+
+    
+
         
     @IBAction func resetDidTap(_ sender: Any) {
-        amdValue.text = ""
-        rubValue.text = ""
-        usdValue.text = ""
-        eurValue.text = ""
-        aedValue.text = ""
-        tklValue.text = ""
+        clearFields()
         
     }
     

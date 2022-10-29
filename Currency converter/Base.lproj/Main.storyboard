@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -39,6 +38,15 @@
                                 <rect key="frame" x="100" y="224" width="210" height="38.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tklDidChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="FR4-lk-7B8"/>
+                                    <action selector="tklDidTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="CTI-9W-CDI"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇦🇪 AED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRw-Ch-uub">
                                 <rect key="frame" x="20" y="278.33333333333331" width="80" height="20.333333333333314"/>
@@ -50,6 +58,15 @@
                                 <rect key="frame" x="100" y="269.33333333333331" width="210" height="38.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="aedDidChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="GvZ-LE-MYz"/>
+                                    <action selector="aedDidTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="nJg-Y5-j4S"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇪🇺 EUR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3vw-BT-Yg6">
                                 <rect key="frame" x="20" y="323.66666666666669" width="80" height="20.333333333333314"/>
@@ -61,6 +78,15 @@
                                 <rect key="frame" x="100" y="314.66666666666669" width="210" height="38.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="eurDidChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="g1q-Qz-Jjd"/>
+                                    <action selector="eurDidTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="5Ig-1j-FKE"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇺🇸 USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2z5-US-PDv">
                                 <rect key="frame" x="20" y="369" width="80" height="20.333333333333314"/>
@@ -72,6 +98,15 @@
                                 <rect key="frame" x="100" y="360" width="210" height="38.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="usdDidChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="cQg-bX-J5z"/>
+                                    <action selector="usdDidTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="j5f-QB-vxm"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇦🇲 AMD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxo-aw-Bib">
                                 <rect key="frame" x="20" y="414.33333333333331" width="80" height="20.333333333333314"/>
@@ -83,6 +118,11 @@
                                 <rect key="frame" x="100" y="405.33333333333331" width="210" height="38.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="amdDidChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="jDF-yv-hFd"/>
                                     <action selector="amdDidTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="F4Z-P7-LXX"/>
@@ -98,6 +138,11 @@
                                 <rect key="frame" x="100" y="450.66666666666669" width="210" height="38.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="rubDidChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="HU2-xm-IGZ"/>
                                     <action selector="rubDidTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="iFx-iC-CoG"/>
@@ -149,7 +194,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Xml-fc-FQa" firstAttribute="leading" secondItem="rkY-Pj-ANQ" secondAttribute="trailing" constant="15" id="0sf-to-a2x"/>
                             <constraint firstItem="Xml-fc-FQa" firstAttribute="centerY" secondItem="rkY-Pj-ANQ" secondAttribute="centerY" id="2fP-P6-ze5"/>
@@ -244,9 +289,4 @@
             <point key="canvasLocation" x="56.92307692307692" y="-2.1327014218009479"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>
